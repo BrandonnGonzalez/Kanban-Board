@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.App {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 40px);
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+.column {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.column:nth-child(1) h2 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.column:nth-child(2) h2 {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.column:nth-child(3) h2 {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.task {
+  background: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid #e0e0e0;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task[data-status="todo"] {
+  border-left-color: #4facfe;
+}
+
+.task[data-status="inProgress"] {
+  border-left-color: #43e97b;
+}
+
+.task[data-status="done"] {
+  border-left-color: #fa709a;
+  background: linear-gradient(135deg, #dbf3c9 0%, #e8f5e8 100%);
+}
+
+.task p {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+select:hover {
+  border-color: #667eea;
+}
+
+/* Empty state styling */
+.column:empty::after {
+  content: "No tasks yet";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-style: italic;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  border: 2px dashed #e0e0e0;
+}
